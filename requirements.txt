@@ -1,0 +1,3 @@
+httpx==0.27.0
+pyjson5==1.6.6
+fastmcp

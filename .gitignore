@@ -1,0 +1,21 @@
+.venv
+__pycache__
+*.pyc
+.env
+*.log
+*.pyo
+*.pyd
+*.pyw
+*.pyc
+
+# MacOS
+.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# Windows
+Thumbs.db
+
+
