@@ -42,7 +42,7 @@ For detailed documentation, please see the [MCP Server Documentation](./docs/mcp
     CISCO_API_CLIENT_ID=your_client_id
     CISCO_API_CLIENT_SECRET=your_client_secret
     ```
-    **Note**: For production environments, it is highly recommended to use a secure secret management solution instead of a `.env` file.
+    **Note**: For production environments, it is highly recommended to use a secure secret management solution (such as CyberArk Conjur, HashiCorp's Vault, etc.) instead of a `.env` file.
 
 ### Running the Server
 
