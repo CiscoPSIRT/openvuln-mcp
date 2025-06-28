@@ -81,3 +81,53 @@ python src/openvuln_mcp_server.py
 ```
 
 Once the server is running, it will be accessible to any MCP-compatible client, providing a seamless way to interact with the Cisco OpenVuln API.
+
+---
+
+## Example of Using Claude Desktop with the OpenVuln MCP Server
+
+Add this to your `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "openvuln-mcp": {
+      "command": "python3",
+      "args": [
+        "src/openvuln_mcp_server.py"
+      ],
+      "env": {
+        "CISCO_CLIENT_ID": "YOUR_CLIENT_ID",
+        "CISCO_CLIENT_SECRET": "YOUR_CLIENT_SECRET"
+      }
+    }
+  }
+}
+```
+
+## Enhanced Configuration for Integrating OpenVuln with Claude Desktop
+
+Example of gaining direct access to Cisco's security vulnerability data within your Claude Desktop environment by integrating the OpenVuln MCP Server. This connection allows you to query for security advisories, CVE details, and other vulnerability information using natural language.
+
+To enable this functionality, add the following configuration to your `claude_desktop_config.json` file. This will set up a local server that Claude Desktop can communicate with to fetch data from the Cisco PSIRT openVuln API.
+
+### Configuration Snippet
+
+Insert the `mcpServers` object into your `claude_desktop_config.json` file. If you already have other servers configured, add `"openvuln-mcp"` as a new entry within the `mcpServers` object.
+
+```json
+{
+  "mcpServers": {
+    "openvuln-mcp": {
+      "command": "python3",
+      "args": [
+        "src/openvuln_mcp_server.py"
+      ],
+      "env": {
+        "CISCO_CLIENT_ID": "YOUR_CLIENT_ID",
+        "CISCO_CLIENT_SECRET": "YOUR_CLIENT_SECRET"
+      }
+    }
+  }
+}
+```
+
