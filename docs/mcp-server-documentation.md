@@ -72,7 +72,7 @@ CISCO_API_CLIENT_ID=your_client_id
 CISCO_API_CLIENT_SECRET=your_client_secret
 ```
 
-**Note**: While using a `.env` file is convenient for local development, in production environments, you should use more secure methods for managing secrets, such as CyberArk Conjur, AWS Secrets Manager, Azure Key Vault, or HashiCorp Vault. Avoid storing sensitive credentials directly in source-controlled files.
+**Note**: For important security considerations regarding the use of a `.env` file, refer to the note in the [Key Components](#key-components) section.
 
 3. **Run the Server**: Start the MCP server by running the `openvuln_mcp_server.py` script:
 
