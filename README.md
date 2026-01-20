@@ -18,41 +18,60 @@ For detailed documentation, please see the [MCP Server Documentation](./docs/mcp
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.13 or higher
+- [uv](https://docs.astral.sh/uv/) - Fast Python package installer and resolver
 - Cisco API Client ID and Client Secret. You can obtain these by registering an application on the [Cisco API Console](https://developer.cisco.com/). For more details, see the [authentication guide](https://developer.cisco.com/docs/psirt/authentication/).
 
 ### Installation
 
-1.  **Clone the repository:**
+1.  **Install uv** (if not already installed):
+    ```bash
+    # On macOS and Linux
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    
+    # On Windows
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+    ```
+
+2.  **Clone the repository:**
     ```bash
     git clone https://github.com/CiscoPSIRT/openvuln-mcp.git
     cd openvuln-mcp
     ```
 
-2.  **Install dependencies:**
+3.  **Install dependencies:**
     ```bash
-    pip install -r requirements.txt
+    uv sync --locked
     ```
 
-### Configuration
+### IDE Configuration
 
-1.  Create a `.env` file in the root of the project.
-2.  Add your Cisco API credentials to the `.env` file:
-    ```
-    CISCO_API_CLIENT_ID=your_client_id
-    CISCO_API_CLIENT_SECRET=your_client_secret
-    ```
-    **Note**: For production environments, it is highly recommended to use a secure secret management solution (such as CyberArk Conjur, HashiCorp's Vault, etc.) instead of a `.env` file.
+This is an stdio-based MCP server that needs to be configured in your IDE's MCP settings. 
 
-### Running the Server
+1. Locate your IDE's MCP configuration file (commonly `mcp.json` found through IDE's MCP Settings)
+2. Add the OpenVuln MCP server configuration:
 
-Start the MCP server by running the `openvuln_mcp_server.py` script:
-
-```bash
-python src/openvuln_mcp_server.py
+```json
+{
+  "mcpServers": {
+    "openvuln-mcp": {
+      "command": "/path/to/openvuln-mcp/.venv/bin/python3",
+      "args": ["/path/to/openvuln-mcp/src/openvuln_mcp_server.py"],
+      "env": {
+        "CISCO_API_CLIENT_ID": "your_client_id",
+        "CISCO_API_CLIENT_SECRET": "your_client_secret"
+      }
+    }
+  }
+}
 ```
 
-Once the server is running, it will be accessible to any MCP-compatible client.
+3. Replace `/path/to/openvuln-mcp` with the actual path to your cloned repository
+4. Replace `your_client_id` and `your_client_secret` with your Cisco API credentials
+5. Verify the server is connected by checking your IDE's MCP settings - you should see available tools for the openvuln-mcp server
+
+**Note**: On Windows, use `.venv/Scripts/python.exe` instead of `.venv/bin/python3` in the command path.
+
 
 ## Contributing
 
