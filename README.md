@@ -2,8 +2,6 @@
 
 This is a community supported open project of a Model Context Protocol (MCP) server for Cisco Security Advisories. This server provides tools to retrieve and list security advisories from the [Cisco OpenVuln API](https://developer.cisco.com/docs/psirt/). This allows AI application developers to interact with the OpenVuln API using a standardized interface without needing to manage authentication tokens or directly handle the API's complexities.
 
-For detailed documentation, please see the [MCP Server Documentation](./docs/mcp-server-documentation.md).
-
 ## Features
 
 - Fetches Cisco security advisories by ID.
